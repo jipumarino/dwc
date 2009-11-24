@@ -26,7 +26,7 @@ end
 def get_freqs_diff freqs1, freqs2
   df = {}
   freqs1.merge(freqs1) do |word, values|
-    df = freqs2[word].nil? ? 100000000 : values[:freq_rel]/freqs2[word][:freq_rel]
+    df = freqs2[word].nil? ? values[:freq_rel]*freqs2.size : values[:freq_rel]/freqs2[word][:freq_rel]
     {:freq_abs => values[:freq_abs], :freq_rel => values[:freq_rel], :freq_diff => df}
   end
 end
