@@ -2,19 +2,9 @@
 <head>
 <title>Resultados</title>
 <style>
-table.result{
-  border-width:1px;
-  border-spacing:0px;
-  border-style:solid;
-  border-collapse:collapse;
+body {
+  text-align:center;;
 };
-table.result td {
-	border-width: 1px;
-	padding: 2px;
-	border-style: solid;
-	border-color: gray;
-	background-color: white;
-}
 </style>
 </head>
 <body>
@@ -22,88 +12,15 @@ table.result td {
 Archivo 1 <input type="file" name="file1">  Archivo 2 <input type="file" name="file2">  <button type="submit">Enviar</button>
 </form>
 
-<table>
-<tr>
-<td>  
-  
-<h1>Archivo 1</h1>
-<table class="result">
-<tr>
-  <th>Palabra</th>
-  <th>Frecuencia Absoluta</th>
-  <th>Frecuencia Relativa</th>
-</tr>
-<% @freqs1.sort_by{|word,values| [-values[:freq_abs],word]}.each do |row| %>
-<tr>
-  <td><%= row[0] %></td>
-  <td><%= row[1][:freq_abs] %></td>
-  <td><%= row[1][:freq_rel] %></td>
-</tr>
+<% @df1a2.sort_by{rand}.each do |row| %>
+<span style="font-size:<%= row[1][:freq_diff]*8 %>px"><%= row[0] %></span>
 <% end %>
-</table>
 
-
-</td>
-<td>
-
-
-<h1>Archivo 2</h1>
-<table class="result">
-<tr>
-  <th>Palabra</th>
-  <th>Frecuencia Absoluta</th>
-  <th>Frecuencia Relativa</th>
-</tr>
-<% @freqs2.sort_by{|word,values| [-values[:freq_abs],word]}.each do |row| %>
-<tr>
-  <td><%= row[0] %></td>
-  <td><%= row[1][:freq_abs] %></td>
-  <td><%= row[1][:freq_rel] %></td>
-</tr>
+<!-- <div class="wordcloud">
+<% @df2a1.sort_by{rand}.each do |row| %>
+<span style="font-size:<%= row[1][:freq_diff] %>px"><%= row[0] %></span>
 <% end %>
-</table>
-
-</td>
-
-<td>
-
-
-<h1>Diff 1&gt;2</h1>
-<table class="result">
-<tr>
-  <th>Palabra</th>
-  <th>Frecuencia Diferencial</th>
-</tr>
-<% @df1a2.sort_by{|word,values| [-values[:freq_diff],-values[:freq_abs]]}.each do |row| %>
-<tr>
-  <td><%= row[0] %></td>
-  <td><%= row[1][:freq_diff] %></td>
-</tr>
-<% end %>
-</table>
-
-</td>
-
-<td>
-
-
-<h1>Diff 2&gt;1</h1>
-<table class="result">
-<tr>
-  <th>Palabra</th>
-  <th>Frecuencia Diferencial</th>
-</tr>
-<% @df2a1.sort_by{|word,values| [-values[:freq_diff],-values[:freq_abs]]}.each do |row| %>
-<tr>
-  <td><%= row[0] %></td>
-  <td><%= row[1][:freq_diff] %></td>
-</tr>
-<% end %>
-</table>
-
-</td>
-
-</tr>
+</div> -->
 
 </body>
 </html>
