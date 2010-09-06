@@ -2,11 +2,9 @@
 require 'rubygems'
 require 'sinatra'
  
-Sinatra::Application.default_options.merge!(
-  :run => false,
-  :env => :production
-)
- 
-require 'diff_word_clouds.rb'
-run Sinatra.application
+set :env,  :production
+disable :run
 
+require './diff_word_clouds.rb'
+
+run Sinatra::Application
